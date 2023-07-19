@@ -2,6 +2,7 @@ import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
+import os
 import mlflow
 
 # Define the input data model
@@ -15,8 +16,12 @@ class InputData(BaseModel):
     active_member: int
     estimated_salary: float
 
-# Load your trained model
-model = joblib.load(r"C:\Users\mussie\Pictures\Camera Roll\pp\app\model.pkl")
+# Load your trained model using an environment variable for the model path
+# model_path = os.environ.get("MODEL_PATH", "/path/to/your/model.pkl")
+# model = joblib.load(model_path)
+
+#Load your trained model
+model = joblib.load(r"/home/mussie/Music/home projects/nice_one/seving-ml-model-using-fastapi-and-docker/model.pkl")
 
 # Load the model from MLflow
 
